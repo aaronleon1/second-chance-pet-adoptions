@@ -87,10 +87,8 @@ const PetCard = ({
     let removedPet = [...likes];
     if (likes.filter((e) => e.id === pet.id).length > 0) {
       setLikes(removedPet.filter((value) => value.id !== pet.id));
-      console.log("removed" + likes);
     } else {
       setLikes((prevState) => [...prevState, pet]);
-      console.log("added");
     }
   };
 

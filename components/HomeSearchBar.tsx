@@ -41,7 +41,6 @@ const HomeSearchBar = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         localStorage.setItem("pets", JSON.stringify(data));
         setPets(data);
         setPage(1);

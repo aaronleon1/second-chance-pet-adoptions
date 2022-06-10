@@ -35,7 +35,6 @@ const Pets: NextPage = () => {
       }
     ).then((data) => data.json());
     setPets(data);
-    console.log(data);
     setPage(page);
     setLoaded(true);
     window.scroll(0, 0);
@@ -47,7 +46,6 @@ const Pets: NextPage = () => {
     setPets(details);
   }, []);
 
-  console.log(likes);
   return (
     <div className="">
       <Head>
