@@ -1,0 +1,63 @@
+import React, { createContext } from "react";
+
+interface petsContext {
+  token: string | null;
+  pets: {}[] | null;
+  setPets: (pets: {}[] | null) => void | null;
+  page: number;
+  setPage: (page: number) => void | null;
+  totalResults: number;
+  setTotalResults: (totalResults: number) => void | null;
+  breeds: {}[] | null;
+  setBreeds: (breeds: {}[] | null) => void | null;
+  filteredBreed: string | null;
+  setFilteredBreed: (filteredBreed: string | null) => void | null;
+  url: string | null;
+  setUrl: (url: string | null) => void | null;
+  distance: string | null;
+  setDistance: (distance: string | null) => void | null;
+  zip: string | null;
+  setZip: (zip: string | null) => void | null;
+  pet: string | null;
+  setPet: (pet: string | null) => void | null;
+  selectedBreed: string | null;
+  setSelectedBreed: (selectedBreed: string | null) => void | null;
+  filteredPage: number;
+  setFilteredPage: (filteredPage: number) => void | null;
+  name: string | null;
+  setName: (name: string | null) => void | null;
+  image: string | null;
+  setImage: (image: string | null) => void | null;
+  gender: string | null;
+  setGender: (gender: string | null) => void | null;
+  desc: string | null;
+  setDesc: (desc: string | null) => void | null;
+  breed: string | null;
+  setBreed: (breed: string | null) => void | null;
+  status: string | null;
+  setStatus: (status: string | null) => void | null;
+  attributes: {} | null;
+  setAttributes: (attributes: {} | null) => void | null;
+  location: string | null;
+  setLocation: (location: string | null) => void | null;
+  petUrl: string | null;
+  setPetUrl: (petUrl: string | null) => void | null;
+  size: string | null;
+  setSize: (size: string | null) => void | null;
+  trained: string | null;
+  setTrained: (trained: string | null) => void | null;
+  organizations: {}[] | null;
+  setOrganizations: (organizations: {}[] | null) => void | null;
+  orgZip: string | null;
+  setOrgZip: (orgZip: string | null) => void | null;
+  loadedOrganizations: boolean | null;
+  setLoadedOrganizations: (loadedOrganizations: boolean | null) => void | null;
+  age: string | null;
+  setAge: (age: string | null) => void | null;
+  likes: {}[] | [];
+  setLikes: (likes: {}[] | []) => void | null;
+}
+
+const PetContext = createContext<petsContext>({});
+
+export default PetContext;
