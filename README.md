@@ -4,7 +4,7 @@ V1.0
 
 A pet adoption platform linking to the PetFinder API. Built with Typescript and React/Next.JS, along with TailwindCSS.
 
-All hosted on Netlify.
+Will be hosted on Netlify shortly.
 
 ## Dependencies include:
 
