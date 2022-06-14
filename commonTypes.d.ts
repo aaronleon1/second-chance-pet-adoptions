@@ -11,6 +11,7 @@ export interface PetCard {
   status: string;
   age: string;
   petUrl: string;
+  images: {}[];
 }
 
 export interface LikedPet {
@@ -27,4 +28,5 @@ export interface LikedPet {
   gender: gender;
   size: size;
   age: age;
+  images: {}[];
 }

@@ -14,7 +14,7 @@ const Pets: NextPage = () => {
     pets,
     token,
     zip,
-    distance,
+
     page,
     setPets,
     setPage,
@@ -26,7 +26,7 @@ const Pets: NextPage = () => {
 
   const handleChange = async (page: number) => {
     const data = await fetch(
-      `https://api.petfinder.com/v2/animals?type=${pet}&location=${zip}&distance=${distance}&page=${page}`,
+      `https://api.petfinder.com/v2/animals?type=${pet}&location=${zip}&page=${page}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -73,6 +73,7 @@ const Pets: NextPage = () => {
                         : pet.photos[0]?.large ||
                           "/images/no-image-available.jpg"
                     }
+                    images={pet.photos}
                     breed={pet.breeds.primary}
                     gender={pet.gender}
                     name={pet.name}

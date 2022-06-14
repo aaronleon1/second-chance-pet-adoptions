@@ -14,8 +14,8 @@ interface petsContext {
   setFilteredBreed: (filteredBreed: string | null) => void | null;
   url: string | null;
   setUrl: (url: string | null) => void | null;
-  distance: string | null;
-  setDistance: (distance: string | null) => void | null;
+  id: number | null;
+  setId: (id: number | null) => void | null;
   zip: string | null;
   setZip: (zip: string | null) => void | null;
   pet: string | null;
@@ -28,6 +28,8 @@ interface petsContext {
   setName: (name: string | null) => void | null;
   image: string | null;
   setImage: (image: string | null) => void | null;
+  images: {}[] | [] | null;
+  setImages: (images: {}[] | [] | null) => void | null;
   gender: string | null;
   setGender: (gender: string | null) => void | null;
   desc: string | null;

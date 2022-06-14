@@ -23,6 +23,7 @@ const PetCard = ({
   attributes,
   status,
   age,
+  images,
 }: PetCard) => {
   const {
     setName,
@@ -37,6 +38,8 @@ const PetCard = ({
     setAge,
     likes,
     setLikes,
+    setId,
+    setImages,
   } = useContext(PetContext);
 
   //OnClick, add pet details to state for its personal page.
@@ -51,10 +54,13 @@ const PetCard = ({
     setSize(size);
     setGender(gender);
     setAge(age);
+    setId(id);
+    setImages(images);
 
     localStorage.setItem(
       "petDetails",
       JSON.stringify({
+        id: id,
         name: name,
         image: image,
         breed: breed,
@@ -65,6 +71,7 @@ const PetCard = ({
         gender: gender,
         size: size,
         age: age,
+        images: images,
       })
     );
   };
@@ -73,6 +80,7 @@ const PetCard = ({
     id: id,
     name: name,
     image: image,
+    images: images,
     breed: breed,
     desc: desc,
     attributes: attributes,
@@ -90,11 +98,12 @@ const PetCard = ({
     } else {
       setLikes((prevState) => [...prevState, pet]);
     }
+    localStorage.setItem("likedPets", JSON.stringify(likes));
   };
 
   return (
     <button
-      className="w-full md:w-1/5 my-2 md:mx-0.5 bg-white rounded-xl shadow-md cursor-default flex flex-col"
+      className=" md:w-1/5 my-2 md:mx-0.5 bg-white rounded-xl shadow-md cursor-default flex flex-col h-90 w-96 mx-auto md:h-auto "
       onClick={assignPetHandler}
     >
       <Link href={`/pet/${id}`}>
@@ -107,7 +116,7 @@ const PetCard = ({
           className="pet-card rounded-xl cursor-pointer"
         />
       </Link>
-      <div className="p-2">
+      <div className="p-2 w-full mt-auto">
         <div className="flex  mb-3">
           <Link href={`/pet/${id}`}>
             <span className="block text-xl text-left cursor-pointer font-nunito">
@@ -116,22 +125,14 @@ const PetCard = ({
           </Link>
           <span className="block ml-2 text-right">
             {gender == "Female" ? (
-              <FontAwesomeIcon
-                icon={faVenus}
-                color="#a6a6a6"
-                className="w-4 pt-1"
-              />
+              <i className="fa-solid fa-venus text-gray-400"></i>
             ) : (
-              <FontAwesomeIcon
-                icon={faMars}
-                color="#a6a6a6"
-                className="w-4 pt-1"
-              />
+              <i className="fa-solid fa-mars text-gray-400"></i>
             )}
           </span>
         </div>
 
-        <div className="flex mb-4">
+        <div className="flex mb-4 justify-self-end">
           <span className="block text-sm text-gray-600 font-nunito">
             {size}
           </span>
@@ -149,8 +150,14 @@ const PetCard = ({
               Learn More
             </a>
           </Link>
-          <button
-            className="text-white bg-blue-400 block w-16 px-3 py-1 my-3 rounded-md"
+          <a
+            role="button"
+            className={`text-white bg-blue-400 block w-16 px-3 py-1 my-3 rounded-md ${
+              likes.filter((likedPet) => likedPet.id === pet.id).length > 0
+                ? "hover:bg-red-600"
+                : "hover:bg-green-400"
+            }
+            )}`}
             onClick={() => HandleLikes(pet)}
           >
             {likes.filter((likedPet) => likedPet.id === pet.id).length > 0 ? (
@@ -166,7 +173,7 @@ const PetCard = ({
                 className="w-4 pt-1 mx-auto"
               />
             )}
-          </button>
+          </a>
         </div>
       </div>
     </button>

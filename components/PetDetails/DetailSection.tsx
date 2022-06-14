@@ -6,12 +6,12 @@ const DetailSection = () => {
     useContext(PetContext);
 
   return (
-    <div className="md:w-7/12 shadow-xl rounded-xl mb-20 border-t-2">
+    <div className="md:w-7/12 shadow-xl rounded-xl mb-10 md:mb-20 border-t-2">
       <div className="flex flex-col p-3">
         <span className="block text-3xl mb-4">Meet {name}</span>
 
         <hr />
-        <div className="flex flex-col md:flex-row my-6">
+        <div className="flex  my-6">
           <span className="block">{age}</span>
           <span className="mx-2 text-sm">•</span>
           <span className="block">{gender}</span>

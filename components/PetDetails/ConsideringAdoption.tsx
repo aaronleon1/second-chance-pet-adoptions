@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import PetContext from "../context";
+import { LikedPet } from "../../commonTypes";
 
 const ConsideringAdoption = () => {
-  const { petUrl, name } = useContext(PetContext);
+  const { name, petUrl } = useContext(PetContext);
+
   return (
-    <div className=" bg-blue-500 w-1/3 h-1/2 rounded-md shadow-xl">
+    <div className="  w-full md:w-1/3 h-1/2 rounded-md shadow-xl bg-slate-800">
       <div className="p-4 flex flex-col">
-        <span className="text-2xl text-white text-center mt-10 mb-6">
+        <span className="text-2xl  text-center mt-10 text-white">
           Considering {name} for adoption?
         </span>
         <span className="block w-full px-8">

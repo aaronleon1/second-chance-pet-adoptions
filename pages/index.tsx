@@ -16,12 +16,13 @@ const Home: NextPage = () => {
       </Head>
 
       <Layout>
-        <div className="flex flex-col justify-between min-h-screen hero relative">
-          <span className="text-6xl text-white absolute top-32 w-full md:ml-4 text-center">
+        <section className="flex flex-col  min-h-screen hero relative">
+          <h1 className="block  font-script font-bold  text-slate-700   text-5xl xl:text-6xl text-center mt-10 w-96 mx-auto px-10 md:text-left md:absolute md:left-[10%] xl:left-[15%] md:top-[5%]">
             Second Chance Pet Adoptions
-          </span>
+          </h1>
+
           <HomeSearchBar />
-        </div>
+        </section>
       </Layout>
     </div>
   );

@@ -1,22 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Layout from "../components/Layout";
-import styles from "../styles/Home.module.css";
 import PetContext from "../components/context";
-import HomeSearchBar from "../components/HomeSearchBar";
 import { useContext, useState, useEffect } from "react";
 import PetCard from "../components/PetCard";
-import Pagination from "react-js-pagination";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Liked: NextPage = () => {
-  const { page, setPets, setPage, totalResults, pet, likes } =
+  const { page, setPets, setPage, totalResults, pet, likes, setLikes } =
     useContext(PetContext);
-
+  const router = useRouter();
   useEffect(() => {
-    let details = localStorage.getItem("pets");
-    details = JSON.parse(details);
-    setPets(details);
+    let likedPets = localStorage.getItem("likedPets");
+    likedPets = JSON.parse(likedPets);
+    setLikes(likedPets);
   }, []);
 
   return (
@@ -28,13 +26,13 @@ const Liked: NextPage = () => {
       </Head>
 
       <Layout>
-        <section className=" min-h-screen relative max-w-7xl mx-auto">
+        <section className="min-h-screen max-w-7xl mx-auto">
           {likes.length > 0 && (
-            <span className="text-4xl text-center md:text-left mt-4">
+            <span className="block text-4xl text-center md:text-left my-10">
               Liked Pets
             </span>
           )}
-          <div className="flex flex-wrap justify-between mt-10 mb-20">
+          <div className="flex flex-wrap justify-evenly mt-10 mb-20">
             {likes.length > 0 ? (
               likes.map((pet: any) => {
                 return (
@@ -55,10 +53,25 @@ const Liked: NextPage = () => {
                 );
               })
             ) : (
-              <span className="block text-4xl text-center mt-20">
-                You have not added any pets to your likes yet. Head to the home
-                page to search for pets!
-              </span>
+              <div className="max-w-7xl mx-auto">
+                <span className="block text-4xl text-center mt-5 md:mt-20 px-10  lg:px-60">
+                  You have not added any pets to your likes yet.
+                </span>
+                <div className="flex mt-20 w-96 mx-auto justify-between px-5">
+                  <button
+                    onClick={() => router.back()}
+                    className="block bg-blue-400 hover:bg-blue-500 text-white p-5 w-40 text-center mx-auto rounded-xl"
+                  >
+                    Back
+                  </button>
+
+                  <Link href="/">
+                    <a className="block bg-blue-400 hover:bg-blue-500 text-white p-5 w-40 text-center mx-auto rounded-xl">
+                      Home
+                    </a>
+                  </Link>
+                </div>
+              </div>
             )}
           </div>
         </section>

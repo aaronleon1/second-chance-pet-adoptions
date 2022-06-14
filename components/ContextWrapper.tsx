@@ -13,7 +13,7 @@ const ContextWrapper = ({ children }: Props) => {
   const [url, setUrl] = useState<string>(``);
   const [pet, setPet] = useState<string>("Pet");
   const [zip, setZip] = useState<string>("");
-  const [distance, setDistance] = useState<string | null>("default");
+  const [id, setId] = useState<number>(0);
   const [image, setImage] = useState<string>("");
   const [desc, setDesc] = useState<string>("");
   const [gender, setGender] = useState<string>("");
@@ -27,6 +27,7 @@ const ContextWrapper = ({ children }: Props) => {
   const [age, setAge] = useState<string>("");
   const [trained, setTrained] = useState<string>("");
   const [likes, setLikes] = useState([]);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -48,14 +49,16 @@ const ContextWrapper = ({ children }: Props) => {
         setTotalResults,
         url,
         setUrl,
-        distance,
-        setDistance,
+        id,
+        setId,
         zip,
         setZip,
         name,
         setName,
         image,
         setImage,
+        images,
+        setImages,
         gender,
         setGender,
         desc,

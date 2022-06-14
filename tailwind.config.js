@@ -7,11 +7,16 @@ module.exports = {
     extend: {
       fontFamily: {
         nunito: ["nunito", "sans-serif"],
+        inter: ["inter", "sans-serif"],
+        script: ["bad script", "sans-serif"],
       },
       colors: {
         header: "#F7882F",
         footer: "#262626",
-        "image-bg": "#DCC7AA",
+        "cta-bg": "#DCC7AA",
+      },
+      spacing: {
+        "1-5": "20%",
       },
     },
   },

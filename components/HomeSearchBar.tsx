@@ -2,22 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React, { useState, useEffect, useContext } from "react";
 import PetContext from "./context";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { isValidZip } from "./ValidateZip";
 const HomeSearchBar = () => {
-  const {
-    zip,
-    setZip,
-    distance,
-    setDistance,
-    pets,
-    setPets,
-    token,
-    setTotalResults,
-    pet,
-    setPet,
-    setPage,
-  } = useContext(PetContext);
-
+  const { zip, setZip, setPets, token, setTotalResults, pet, setPet, setPage } =
+    useContext(PetContext);
+  //Set link based on if zip code is valid or not
   const [loaded, setLoaded] = useState(false);
   const handleZip = (event: React.ChangeEvent<HTMLInputElement>) => {
     setZip(event.target.value);
@@ -25,14 +14,18 @@ const HomeSearchBar = () => {
   const handlePet = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setPet(event.target.value);
   };
-  const handleDistance = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setDistance(event.target.value);
-  };
+
   const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!isValidZip(zip)) {
+      alert("Invalid zip code. Please enter a valid zip code.");
+      return;
+    }
 
     await fetch(
-      `https://api.petfinder.com/v2/animals?type=${pet}&location=${zip}&distance=${distance}`,
+      `https://api.petfinder.com/v2/animals?type=${pet}${
+        zip && "&location=" + zip
+      }`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -54,75 +47,53 @@ const HomeSearchBar = () => {
       noValidate
       id="pet-search"
       autoComplete="off"
-      className="text-center absolute bottom-36 left-1/2 -translate-x-1/2 -translate-y-1/2 md:w-8/12 bg-white rounded-md flex justify-between items-center h-16"
+      className="text-center absolute bottom-60 md:bottom-44 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 md:w-1/3  bg-white rounded-md flex justify-between items-center h-16 px-2"
     >
       <input
         type="text"
         name="zipcode"
         value={zip}
         onChange={handleZip}
-        className="w-1/4 pl-1 ml-4 h-10"
+        className="w-2/3  ml-4 h-10 focus:outline-none border-r-2"
         placeholder="Zip Code*"
       />
-      <select
-        value={pet}
-        onChange={handlePet}
-        placeholder="pet"
-        className="h-10 w-1/4 bg-white"
-      >
-        <option value="Pet" disabled hidden className="bg-white">
-          Pet
-        </option>
-        <option value="dog" className="bg-white">
-          Dog
-        </option>
-        <option value="cat" className="bg-white">
-          Cat
-        </option>
-      </select>
+      <div onChange={handlePet} className="flex px-4 w-1/3">
+        <div className="mr-5">
+          <input
+            type="radio"
+            value="dog"
+            name="pet"
+            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500  focus:outline-none"
+          />
+          <label className="ml-2 text-sm font-medium text-gray-900 ">Dog</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            value="cat"
+            name="pet"
+            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500   focus:outline-none"
+          />
 
-      <select
-        value={distance}
-        onChange={handleDistance}
-        className="h-10 w-1/4 bg-white"
-      >
-        <option value="default" disabled hidden className="bg-white">
-          Distance (miles)
-        </option>
-        <option value="5" className="bg-white">
-          5
-        </option>
-        <option value="10" className="bg-white">
-          10
-        </option>
-        <option value="25" className="bg-white">
-          25
-        </option>
-        <option value="50" className="bg-white">
-          50
-        </option>
-        <option value="100" className="bg-white">
-          100
-        </option>
-        <option value="250" className="bg-white">
-          250
-        </option>
-      </select>
+          <label className="ml-2 text-sm font-medium text-gray-900 ">Cat</label>
+        </div>
+      </div>
 
-      <span className="w-8 mr-4">
-        {pet && zip?.length >= 5 && token ? (
-          <button type="submit" onClick={handleSubmit} className="mr-4">
-            <Link href="/pets">
-              <FontAwesomeIcon
-                icon={faMagnifyingGlass}
-                className="py-2 text-blue-500 text-2xl"
-              />
-            </Link>
-          </button>
+      <button
+        type="submit"
+        onClick={handleSubmit}
+        className="ml-4 bg-blue-500 h-10 w-10 rounded-lg text-white mr-1 "
+      >
+        {zip?.length === 5 && token && isValidZip(zip) ? (
+          <Link href={"/pets"}>
+            <i className="fa-solid fa-magnifying-glass w-full h-full py-3"></i>
+          </Link>
         ) : (
-          ""
+          <Link href={"/"}>
+            <i className="fa-solid fa-magnifying-glass text-lg w-full h-full"></i>
+          </Link>
         )}
-      </span>
+      </button>
     </form>
   );
 };

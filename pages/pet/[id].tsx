@@ -1,22 +1,14 @@
+import { setHttpAgentOptions } from "next/dist/server/config";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import PetContext from "../../components/context";
+import ImageSlider from "../../components/PetDetails/ImageSlider";
 import Layout from "../../components/Layout";
 import ConsideringAdoption from "../../components/PetDetails/ConsideringAdoption";
 import DetailSection from "../../components/PetDetails/DetailSection";
 
 const PetDetails = () => {
   const {
-    image,
-    name,
-    gender,
-    size,
-    breed,
-    desc,
-    petUrl,
-    attributes,
-    status,
     setName,
     setImage,
     setDesc,
@@ -26,30 +18,30 @@ const PetDetails = () => {
     setBreed,
     setSize,
     setGender,
+    setImages,
+    setAge,
   } = useContext(PetContext);
-
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    let details = localStorage.getItem("petDetails");
-    details = JSON.parse(details);
-    setName(name);
-    setImage(image);
-    setDesc(desc);
-    setAttributes(attributes);
-    setStatus(status);
-    setPetUrl(petUrl);
-    setBreed(breed);
-    setSize(size);
-    setGender(gender);
+    let petDetails = JSON.parse(localStorage.getItem("petDetails"));
+    setAge(petDetails.age);
+    setName(petDetails.name);
+    setDesc(petDetails.desc);
+    setAttributes(petDetails.attributes);
+    setStatus(petDetails.status);
+    setPetUrl(petDetails.petUrl);
+    setBreed(petDetails.breed);
+    setSize(petDetails.size);
+    setGender(petDetails.gender);
+    setImages(petDetails.images);
   }, []);
+
   return (
     <Layout>
       <section className=" max-w-7xl mx-auto">
-        <div className="bg-image-bg">
-          <div className="w-1/3 mx-auto mt-20 ">
-            <Image src={image} alt={name} height={700} width={600} />
-          </div>
+        <div className="bg-slate-800 md:mt-10 my-auto">
+          <ImageSlider />
         </div>
-
         <section className="flex flex-col md:flex-row md:justify-between my-10">
           <DetailSection />
           <ConsideringAdoption />

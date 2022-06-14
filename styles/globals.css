@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 html,
 body {
   padding: 0;
@@ -20,7 +20,7 @@ a {
 }
 
 .hero {
-  background-image: url("../public/images/heroImg.jpg");
+  background-image: url("../public/images/mainHeroImg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -75,4 +75,12 @@ ul.pagination li a.active {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+}
+
+.font-script {
+  font-family: bad script, sans-serif;
+}
+
+.font-inter {
+  font-family: inter, sans-serif;
 }
