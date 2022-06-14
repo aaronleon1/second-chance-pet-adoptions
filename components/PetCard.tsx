@@ -93,9 +93,12 @@ const PetCard = ({
 
   const HandleLikes = (pet: LikedPet) => {
     let removedPet = [...likes];
+    // @ts-ignore
     if (likes.filter((e) => e.id === pet.id).length > 0) {
+      // @ts-ignore
       setLikes(removedPet.filter((value) => value.id !== pet.id));
     } else {
+      // @ts-ignore
       setLikes((prevState) => [...prevState, pet]);
     }
     localStorage.setItem("likedPets", JSON.stringify(likes));
@@ -153,6 +156,7 @@ const PetCard = ({
           <a
             role="button"
             className={`text-white bg-blue-400 block w-16 px-3 py-1 my-3 rounded-md ${
+              // @ts-ignore
               likes.filter((likedPet) => likedPet.id === pet.id).length > 0
                 ? "hover:bg-red-600"
                 : "hover:bg-green-400"
@@ -160,6 +164,7 @@ const PetCard = ({
             )}`}
             onClick={() => HandleLikes(pet)}
           >
+            {/* @ts-ignore */}
             {likes.filter((likedPet) => likedPet.id === pet.id).length > 0 ? (
               <FontAwesomeIcon
                 icon={faHeartCircleMinus}

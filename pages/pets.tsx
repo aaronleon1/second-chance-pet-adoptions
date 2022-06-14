@@ -42,7 +42,9 @@ const Pets: NextPage = () => {
 
   useEffect(() => {
     let details = localStorage.getItem("pets");
+    // @ts-ignore
     details = JSON.parse(details);
+    // @ts-ignore
     setPets(details);
   }, []);
 
@@ -56,15 +58,19 @@ const Pets: NextPage = () => {
 
       <Layout>
         <div className=" min-h-screen relative max-w-7xl mx-auto">
+          {/* @ts-ignore */}
           {pets?.animals && pets?.animals.length > 0 ? (
             <span className="block text-4xl text-center md:text-left mt-10">{`${
               pet == "dog" ? "Dogs" : "Cats"
             } available for adoption`}</span>
           ) : null}
           <div className="flex flex-wrap justify-between mt-10 mb-20">
+            {/* @ts-ignore */}
             {pets?.animals &&
+              // @ts-ignore
               pets.animals.map((pet: any) => {
                 return (
+                  // @ts-ignore
                   <PetCard
                     key={pet.id}
                     image={

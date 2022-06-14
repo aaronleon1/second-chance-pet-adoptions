@@ -23,6 +23,7 @@ const PetDetails = () => {
   } = useContext(PetContext);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
+    // @ts-ignore
     let petDetails = JSON.parse(localStorage.getItem("petDetails"));
     setAge(petDetails.age);
     setName(petDetails.name);

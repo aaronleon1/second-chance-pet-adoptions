@@ -12,6 +12,7 @@ const ImageSlider = () => {
         return (
           <div key={id + "id"}>
             <Image
+              //@ts-ignore
               src={image.large}
               alt={`image of ${name}`}
               height={500}

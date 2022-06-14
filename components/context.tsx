@@ -59,7 +59,7 @@ interface petsContext {
   likes: {}[] | [];
   setLikes: (likes: {}[] | []) => void | null;
 }
-
+// @ts-ignore
 const PetContext = createContext<petsContext>({});
 
 export default PetContext;

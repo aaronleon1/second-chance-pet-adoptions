@@ -13,7 +13,9 @@ const Liked: NextPage = () => {
   const router = useRouter();
   useEffect(() => {
     let likedPets = localStorage.getItem("likedPets");
+    // @ts-ignore
     likedPets = JSON.parse(likedPets);
+    // @ts-ignore
     setLikes(likedPets);
   }, []);
 
@@ -36,6 +38,7 @@ const Liked: NextPage = () => {
             {likes.length > 0 ? (
               likes.map((pet: any) => {
                 return (
+                  // @ts-ignore
                   <PetCard
                     key={pet.id}
                     image={pet.image}
@@ -49,6 +52,7 @@ const Liked: NextPage = () => {
                     status={pet.status}
                     id={pet.id}
                     age={pet.age}
+                    images={pet.images}
                   />
                 );
               })

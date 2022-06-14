@@ -42,15 +42,19 @@ const DetailSection = () => {
             Not adoptable yet - click view more for more information
           </span>
         )}
+        {/* @ts-ignore */}
         {attributes?.spayed_neutered && (
           <span className="text-xl mb-4">Spayed/Neutered</span>
         )}
+        {/* @ts-ignore */}
         {attributes?.shots_current && (
           <span className="text-xl mb-4">Current on shots</span>
         )}
+        {/* @ts-ignore */}
         {attributes?.shots_current && (
           <span className="text-xl mb-4">House trained</span>
         )}
+        {/* @ts-ignore */}
         {attributes?.special_needs && (
           <span className="text-xl mb-4">
             {name} has special needs. Click{" "}
