@@ -39,6 +39,7 @@ const ContextWrapper = ({ children }: Props) => {
   }, []);
   return (
     <PetContext.Provider
+      // @ts-ignore
       value={{
         token,
         pets,
