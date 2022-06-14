@@ -2,8 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  faMars,
-  faVenus,
   faHeartCirclePlus,
   faHeartCircleMinus,
 } from "@fortawesome/free-solid-svg-icons";

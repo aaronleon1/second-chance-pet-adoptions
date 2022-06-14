@@ -1,13 +1,11 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import PetContext from "./context";
 import { isValidZip } from "./ValidateZip";
 const HomeSearchBar = () => {
   const { zip, setZip, setPets, token, setTotalResults, pet, setPet, setPage } =
     useContext(PetContext);
-  //Set link based on if zip code is valid or not
-  const [loaded, setLoaded] = useState(false);
+
   const handleZip = (event: React.ChangeEvent<HTMLInputElement>) => {
     setZip(event.target.value);
   };
@@ -58,6 +56,7 @@ const HomeSearchBar = () => {
         placeholder="Zip Code*"
       />
       <div
+        // @ts-ignore
         onChange={handlePet}
         className="flex md:px-4 md:w-1/3 justify-between items-center"
       >
@@ -83,6 +82,7 @@ const HomeSearchBar = () => {
 
       <button
         type="submit"
+        // @ts-ignore
         onClick={handleSubmit}
         className="ml-1 md:ml-4 bg-blue-500 h-10 w-12 md:w-10 rounded-lg text-white mr-1 "
       >
