@@ -29,9 +29,9 @@ interface petsContext {
   image: string;
   setImage: (image: string) => void | null;
   images: {}[] | [];
-  setImages: (images: {}[] | [] | null) => void | null;
+  setImages: (images: {}[] | []) => void | null;
   gender: string;
-  setGender: (gender: string | null) => void | null;
+  setGender: (gender: string) => void | null;
   desc: string;
   setDesc: (desc: string) => void | null;
   breed: string;
