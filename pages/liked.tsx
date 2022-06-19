@@ -29,14 +29,14 @@ const Liked: NextPage = () => {
 
       <Layout>
         <section className="min-h-screen max-w-7xl mx-auto">
-          {likes.length > 0 && (
+          {likes && likes?.length > 0 && (
             <span className="block text-4xl text-center md:text-left my-10">
               Liked Pets
             </span>
           )}
           <div className="flex flex-wrap justify-evenly mt-10 mb-20">
-            {likes.length > 0 ? (
-              likes.map((pet: any) => {
+            {likes && likes?.length > 0 ? (
+              likes?.map((pet: any) => {
                 return (
                   // @ts-ignore
                   <PetCard
