@@ -58,25 +58,16 @@ const HomeSearchBar = () => {
       <div
         // @ts-ignore
         onChange={handlePet}
-        className="flex md:px-4 md:w-1/3 justify-between items-center"
+        className="flex md:px-4 w-11/12 mx-auto"
       >
-        <div className=" flex items-center mr-8 md:mr-2">
-          <input
-            type="radio"
-            value="dog"
-            name="pet"
-            className="w-4 h-4  text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:outline-none cursor-pointer"
-          />
-          <label className="ml-2 text-sm  text-gray-900 ">Dog</label>
-        </div>
-        <div className="flex items-center">
-          <input
-            type="radio"
-            value="cat"
-            name="pet"
-            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500  focus:outline-none  cursor-pointer"
-          />
-          <label className="ml-2 text-sm  text-gray-900 ">Cat</label>
+        <div className="w-full flex items-center mr-8 md:mr-0">
+          <select className="w-full focus:outline-none ">
+            <option disabled selected value="Pet">
+              Pet
+            </option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+          </select>
         </div>
       </div>
 
@@ -84,15 +75,15 @@ const HomeSearchBar = () => {
         type="submit"
         // @ts-ignore
         onClick={handleSubmit}
-        className="ml-1 md:ml-4 bg-blue-500 h-10 w-12 md:w-10 rounded-lg text-white mr-1 "
+        className="  bg-blue-500 h-10 w-12 md:w-16 rounded-lg text-white mr-1 "
       >
-        {zip?.length === 5 && token && isValidZip(zip) ? (
+        {zip?.length === 5 && token && isValidZip(zip) && pet !== "Pet" ? (
           <Link href={"/pets"}>
-            <i className="fa-solid fa-magnifying-glass w-full h-full  pt-3"></i>
+            <i className="block fa-solid fa-magnifying-glass w-full h-full fa-lg pt-5 "></i>
           </Link>
         ) : (
           <Link href={"/"}>
-            <i className="fa-solid fa-magnifying-glass w-full h-full  pt-3"></i>
+            <i className="fa-solid fa-magnifying-glass w-full h-full  fa-lg pt-5"></i>
           </Link>
         )}
       </button>

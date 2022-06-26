@@ -95,13 +95,16 @@ const Pets: NextPage = () => {
               })}
           </div>
           <div className="max-w-max ml-auto mt-5">
-            <Pagination
-              activePage={page}
-              itemsCountPerPage={totalResults / 20}
-              totalItemsCount={totalResults}
-              pageRangeDisplayed={5}
-              onChange={handleChange}
-            />
+            {/* @ts-ignore */}
+            {pets?.animals && pets?.animals.length > 0 ? (
+              <Pagination
+                activePage={page}
+                itemsCountPerPage={totalResults / 20}
+                totalItemsCount={totalResults}
+                pageRangeDisplayed={5}
+                onChange={handleChange}
+              />
+            ) : null}
           </div>
         </div>
       </Layout>
