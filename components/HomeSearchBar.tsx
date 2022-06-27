@@ -61,7 +61,7 @@ const HomeSearchBar = () => {
         className="flex md:px-4 w-11/12 mx-auto"
       >
         <div className="w-full flex items-center mr-8 md:mr-0">
-          <select className="w-full focus:outline-none ">
+          <select className="w-full focus:outline-none bg-white">
             <option disabled selected value="Pet">
               Pet
             </option>
