@@ -8,8 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Liked: NextPage = () => {
-  const { page, setPets, setPage, totalResults, pet, likes, setLikes } =
-    useContext(PetContext);
+  const { likes, setLikes } = useContext(PetContext);
   const router = useRouter();
   useEffect(() => {
     let likedPets = localStorage.getItem("likedPets");
@@ -34,7 +33,7 @@ const Liked: NextPage = () => {
               Liked Pets
             </span>
           )}
-          <div className="flex flex-wrap justify-evenly mt-10 mb-20">
+          <div className="flex flex-wrap justify-start mt-10 mb-20">
             {likes && likes?.length > 0 ? (
               likes?.map((pet: any) => {
                 return (

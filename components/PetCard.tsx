@@ -89,22 +89,36 @@ const PetCard = ({
     age: age,
   };
 
-  const HandleLikes = (pet: LikedPet) => {
-    let removedPet = [...likes];
+  const addToLikes = (pet: LikedPet) => {
+    //@ts-ignore
+    setLikes((prevState) => [...prevState, pet]);
+    localStorage.setItem("likedPets", JSON.stringify([...likes, pet]));
+  };
+
+  const removeFromLikes = (pet: LikedPet) => {
+    let tempLikes = [...likes];
     // @ts-ignore
-    if (likes.filter((e) => e.id === pet.id).length > 0) {
-      // @ts-ignore
-      setLikes(removedPet.filter((value) => value.id !== pet.id));
-    } else {
-      // @ts-ignore
-      setLikes((prevState) => [...prevState, pet]);
+    tempLikes = tempLikes.filter((like) => like.id !== pet.id);
+    if (tempLikes.length === 1) {
+      setLikes([]);
+      localStorage.setItem("likedPets", JSON.stringify(tempLikes));
     }
-    localStorage.setItem("likedPets", JSON.stringify(likes));
+    setLikes(tempLikes);
+    localStorage.setItem("likedPets", JSON.stringify(tempLikes));
+  };
+
+  const HandleLikes = (pet: LikedPet) => {
+    //@ts-ignore
+    if (likes.some((like) => like.id === pet.id)) {
+      removeFromLikes(pet);
+    } else {
+      addToLikes(pet);
+    }
   };
 
   return (
     <button
-      className=" md:w-1/5 my-2 md:mx-0.5 bg-white rounded-xl shadow-md cursor-default flex flex-col h-90 w-96 mx-auto md:h-auto "
+      className=" md:w-1/5 my-2 md:mx-4 bg-white rounded-xl shadow-md cursor-default flex flex-col h-90 w-96 mx-auto md:h-auto"
       onClick={assignPetHandler}
     >
       <Link href={`/pet/${id}`}>
@@ -155,7 +169,7 @@ const PetCard = ({
             role="button"
             className={`text-white bg-blue-400 block w-16 px-3 py-1 my-3 rounded-md ${
               // @ts-ignore
-              likes.filter((likedPet) => likedPet.id === pet.id).length > 0
+              likes.some((like) => like.id === pet.id)
                 ? "hover:bg-red-600"
                 : "hover:bg-green-400"
             }
@@ -163,7 +177,7 @@ const PetCard = ({
             onClick={() => HandleLikes(pet)}
           >
             {/* @ts-ignore */}
-            {likes.filter((likedPet) => likedPet.id === pet.id).length > 0 ? (
+            {likes.some((like) => like.id === pet.id) ? (
               <FontAwesomeIcon
                 icon={faHeartCircleMinus}
                 color="#ffffff"

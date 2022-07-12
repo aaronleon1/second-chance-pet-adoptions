@@ -10,7 +10,7 @@ const ImageSlider = () => {
     <Carousel infiniteLoop>
       {images?.map((image, id) => {
         return (
-          <div key={id + "id"}>
+          <div key={id + "id"} className="h-full">
             <Image
               //@ts-ignore
               src={image.large}

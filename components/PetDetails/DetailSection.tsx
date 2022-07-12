@@ -29,7 +29,7 @@ const DetailSection = () => {
           href={petUrl}
           target="_blank"
           rel="noreferrer"
-          className="max-w-max bg-blue-400 py-1 px-2 text-white hover:bg-blue-500 mb-4 rounded-md"
+          className="w-28 text-center md:max-w-max bg-blue-400 py-1 px-2 text-white hover:bg-blue-500 mb-4 rounded-md"
         >
           View More
         </a>

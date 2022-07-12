@@ -40,7 +40,7 @@ const PetDetails = () => {
   return (
     <Layout>
       <section className=" max-w-7xl mx-auto">
-        <div className="bg-slate-800 md:mt-10 my-auto">
+        <div className="bg-slate-800 md:mt-10 ">
           <ImageSlider />
         </div>
         <section className="flex flex-col md:flex-row md:justify-between my-10">

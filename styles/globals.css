@@ -84,3 +84,8 @@ ul.pagination li a.active {
 .font-inter {
   font-family: inter, sans-serif;
 }
+
+.carousel,
+.carousel-slider {
+  margin-bottom: -1.6rem !important;
+}
