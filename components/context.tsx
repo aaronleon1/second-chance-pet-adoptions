@@ -58,6 +58,8 @@ interface petsContext {
   setAge: (age: string) => void | null;
   likes: {}[] | [];
   setLikes: (likes: {}[] | []) => void | null;
+  featuredPets: {}[] | [];
+  setFeaturedPets: (featuredPets: {}[] | []) => void | null;
 }
 // @ts-ignore
 const PetContext = createContext<petsContext>({});

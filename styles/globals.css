@@ -20,7 +20,7 @@ a {
 }
 
 .hero {
-  background-image: url("../public/images/mainHeroImg.jpg");
+  background-image: url("/mainHeroImg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

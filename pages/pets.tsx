@@ -4,7 +4,7 @@ import Image from "next/image";
 import Layout from "../components/Layout";
 import styles from "../styles/Home.module.css";
 import PetContext from "../components/context";
-import HomeSearchBar from "../components/HomeSearchBar";
+import HomeSearchBar from "../components/Home/HomeSearchBar";
 import { useContext, useState, useEffect } from "react";
 import PetCard from "../components/PetCard";
 import Pagination from "react-js-pagination";
@@ -76,8 +76,7 @@ const Pets: NextPage = () => {
                     image={
                       pet.photos[0]?.full
                         ? pet.photos[0]?.full
-                        : pet.photos[0]?.large ||
-                          "/images/no-image-available.jpg"
+                        : pet.photos[0]?.large || "/no-image-available.jpg"
                     }
                     images={pet.photos}
                     breed={pet.breeds.primary}

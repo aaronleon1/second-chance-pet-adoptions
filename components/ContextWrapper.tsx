@@ -28,6 +28,7 @@ const ContextWrapper = ({ children }: Props) => {
   const [trained, setTrained] = useState<string>("");
   const [likes, setLikes] = useState<{}[] | []>([]);
   const [images, setImages] = useState<{}[] | []>([]);
+  const [featuredPets, setFeaturedPets] = useState<{}[] | []>([]);
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -84,6 +85,8 @@ const ContextWrapper = ({ children }: Props) => {
         setPet,
         likes,
         setLikes,
+        featuredPets,
+        setFeaturedPets,
       }}
     >
       {children}

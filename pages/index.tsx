@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Layout from "../components/Layout";
-import HomeSearchBar from "../components/HomeSearchBar";
+import HomeSearchBar from "../components/Home/HomeSearchBar";
 
 const Home: NextPage = () => {
   return (

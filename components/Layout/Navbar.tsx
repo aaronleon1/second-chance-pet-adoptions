@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="mx-auto hidden md:flex max-w-7xl ">
         <Link href="/">
           <Image
-            src="/images/SCPAlogo.png"
+            src="/SCPAlogo.png"
             alt="second chance pet adoption logo"
             width={180}
             height={75}
@@ -45,12 +45,6 @@ const Navbar = () => {
               </a>
             </Link>
           </li>
-
-          <li className="mr-4 text-xl ">
-            <Link href="#">
-              <a>Found a Stray?</a>
-            </Link>
-          </li>
         </ul>
       </div>
       {/* END DESKTOP NAV */}
@@ -59,7 +53,7 @@ const Navbar = () => {
         <div className=" flex md:hidden justify-between ">
           <Link href="/">
             <Image
-              src="/images/SCPAlogo.png"
+              src="/SCPAlogo.png"
               alt="second chance pet adoption logo"
               width={180}
               height={75}
@@ -101,12 +95,6 @@ const Navbar = () => {
                   className="w-8 mx-auto"
                 />
               </a>
-            </Link>
-          </li>
-
-          <li className=" text-xl ml-4 my-3 ">
-            <Link href="#">
-              <a>Found a Stray?</a>
             </Link>
           </li>
         </ul>

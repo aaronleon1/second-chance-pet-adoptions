@@ -6,7 +6,6 @@ export interface PetCard {
   breed: string;
   id: number;
   desc: string;
-  url: string;
   attributes: string;
   status: string;
   age: string;
